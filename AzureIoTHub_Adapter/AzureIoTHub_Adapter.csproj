@@ -224,7 +224,10 @@ xcopy "$(TargetDir)System.Diagnostics.DiagnosticSource.dll"  "C:\ProgramData\BHo
 xcopy "$(TargetDir)Microsoft.Bcl.AsyncInterfaces.dll"  "C:\ProgramData\BHoM\Assemblies" /Y
 xcopy "$(TargetDir)Microsoft.Azure.EventHubs.dll"  "C:\ProgramData\BHoM\Assemblies" /Y
 xcopy "$(TargetDir)Microsoft.Azure.Devices.dll"  "C:\ProgramData\BHoM\Assemblies" /Y
-xcopy "$(TargetDir)Azure.Core.dll"  "C:\ProgramData\BHoM\Assemblies" /Y</PostBuildEvent>
+xcopy "$(TargetDir)Azure.Core.dll"  "C:\ProgramData\BHoM\Assemblies" /Y
+xcopy "$(TargetDir)Microsoft.Azure.Amqp.dll"  "C:\ProgramData\BHoM\Assemblies" /Y
+xcopy "$(TargetDir)Microsoft.Azure.Devices.Shared.dll"  "C:\ProgramData\BHoM\Assemblies" /Y
+xcopy "$(TargetDir)Microsoft.Azure.Services.AppAuthentication.dll"  "C:\ProgramData\BHoM\Assemblies" /Y</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Microsoft.Azure.Services.AppAuthentication.1.0.3\build\Microsoft.Azure.Services.AppAuthentication.targets" Condition="Exists('..\packages\Microsoft.Azure.Services.AppAuthentication.1.0.3\build\Microsoft.Azure.Services.AppAuthentication.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
