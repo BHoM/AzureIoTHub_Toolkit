@@ -34,11 +34,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Adapter_Engine">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Adapter_Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="Adapter_oM">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Adapter_oM.dll</HintPath>
+    </Reference>
     <Reference Include="Azure.Core, Version=1.4.1.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
       <HintPath>..\packages\Azure.Core.1.4.1\lib\netstandard2.0\Azure.Core.dll</HintPath>
     </Reference>
     <Reference Include="Azure.Messaging.EventHubs, Version=5.2.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
       <HintPath>..\packages\Azure.Messaging.EventHubs.5.2.0-preview.3\lib\netstandard2.0\Azure.Messaging.EventHubs.dll</HintPath>
+    </Reference>
+    <Reference Include="BHoM">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\BHoM.dll</HintPath>
     </Reference>
     <Reference Include="BHoM_Adapter">
       <HintPath>C:\ProgramData\BHoM\Assemblies\BHoM_Adapter.dll</HintPath>
@@ -187,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzureIoTHub_Adapter.cs" />
+    <Compile Include="CRUD\Read.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -194,7 +207,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CRUD\" />
+    <ProjectReference Include="..\AzureIoTHub_oM\AzureIoTHub_oM.csproj">
+      <Project>{d7a759fb-ea24-474c-9493-6277a448fcbb}</Project>
+      <Name>AzureIoTHub_oM</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
