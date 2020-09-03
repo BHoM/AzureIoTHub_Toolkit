@@ -26,21 +26,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using BH.oM.Base;
-using System.ComponentModel;
-using BH.oM.Quantities.Attributes;
+using BH.oM.Adapter;
 
-namespace BH.oM.Physical.Sensor
+namespace BH.oM.Adapters.AzureIoTHub
 {
-    [Description("A measure of temperature collected from a sensor device")]
-    public class Temperature : BHoMObject, ISensor
+    public class AzureIoTHubConfig : ActionConfig
     {
-        [BH.oM.Quantities.Attributes.Temperature]
-        [Description("The temperature recorded by the sensor")]
-        public virtual double Value { get; set; } = 0.0;
+        public virtual string EventHubsCompatibleEndPoint { get; set; } = "";
 
-        [Description("The time the temperature was recorded")]
-        public virtual DateTime TimeStamp { get; set; } = new DateTime();
+        public virtual string EventHubsCompatiblePath { get; set; } = "";
 
+        public virtual string IoTHubSasKey { get; set; } = "";
+
+        public virtual string IoTHubSasKeyName { get; set; } = "service";
+
+        /*private readonly static string s_eventHubsCompatibleEndpoint = "sb://ihsuproddbres031dednamespace.servicebus.windows.net/";
+
+        // Event Hub-compatible name
+        // az iot hub show --query properties.eventHubEndpoints.events.path --name {your IoT Hub name}
+        private readonly static string s_eventHubsCompatiblePath = "iothub-ehub-bhomhub-4322670-d57101d060";
+
+        // az iot hub policy show --name service --query primaryKey --hub-name {your IoT Hub name}
+        private readonly static string s_iotHubSasKey = "ezqBqF71POVKiMw/AQaGrBxYQNPgwvjxqhN7Oqgnp0w=";
+        private readonly static string s_iotHubSasKeyName = "service";*/
     }
 }
