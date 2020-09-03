@@ -63,9 +63,12 @@ namespace BH.Adapter.AzureIoTHub
 
         private async Task<List<IBHoMObject>> ReadData(AzureIoTHubConfig config)
         {
-            var connectionString = new EventHubsConnectionStringBuilder(new Uri(config.EventHubsCompatibleEndPoint), config.EventHubsCompatiblePath, config.IoTHubSasKeyName, config.IoTHubSasKey);
+            //var connectionString = new EventHubsConnectionStringBuilder(new Uri(config.EventHubsCompatibleEndPoint), config.EventHubsCompatiblePath, config.IoTHubSasKeyName, config.IoTHubSasKey);
 
-            EventHubClient client = EventHubClient.CreateFromConnectionString(connectionString.ToString());
+            //string blah = "Endpoint=sb://ihsuproddbres045dednamespace.servicebus.windows.net/;SharedAccessKeyName=service;SharedAccessKey=UWgbjZhgAdfb91K61NR8YP9jm7eDGNFfdEk8o2GlUoA=;EntityPath=iothub-ehub-bhomhub-4340199-a7818d4498";
+
+            //EventHubClient client = EventHubClient.CreateFromConnectionString(connectionString.ToString());
+            EventHubClient client = EventHubClient.CreateFromConnectionString(config.ConnectionString);
 
             CancellationToken ct = new CancellationToken();
             var runtimeInfo = await client.GetRuntimeInformationAsync();
