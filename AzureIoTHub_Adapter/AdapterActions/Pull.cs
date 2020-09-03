@@ -46,7 +46,7 @@ namespace BH.Adapter.AzureIoTHub
         {
             if (actionConfig == null)
             {
-                BH.Engine.Reflection.Compute.RecordError("Please provide configuration settings to push to an XML file");
+                BH.Engine.Reflection.Compute.RecordError("Please provide AzureIoTHubConfig configuration settings to pull from Azure IoT Hub");
                 return new List<IBHoMObject>();
             }
 
