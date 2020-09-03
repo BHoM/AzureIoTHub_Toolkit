@@ -28,18 +28,25 @@ using System.Threading.Tasks;
 
 using BH.oM.Adapter;
 
+using System.ComponentModel;
+
 namespace BH.oM.Adapters.AzureIoTHub
 {
     public class AzureIoTHubConfig : ActionConfig
     {
+        [Description("To find the end point run (az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {your IoT Hub name} ) (without the brackets) in an Azure Cloud Shell")]
         public virtual string EventHubsCompatibleEndPoint { get; set; } = "";
 
+        [Description("To find the compatible path run (az iot hub show --query properties.eventHubEndpoints.events.path --name {your IoT Hub name} ) (without the brackets) in an Azure Cloud Shell")]
         public virtual string EventHubsCompatiblePath { get; set; } = "";
 
+        [Description("To find the SaS Key run (az iot hub policy show --name service --query primaryKey --hub-name {your IoT Hub name} ) (without the brackets) in an Azure Cloude Shell")]
         public virtual string IoTHubSasKey { get; set; } = "";
 
+        [Description("This should typically be set to service (default) as the Key Name for the SaS")]
         public virtual string IoTHubSasKeyName { get; set; } = "service";
 
+        // az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {your IoT Hub name}
         /*private readonly static string s_eventHubsCompatibleEndpoint = "sb://ihsuproddbres031dednamespace.servicebus.windows.net/";
 
         // Event Hub-compatible name

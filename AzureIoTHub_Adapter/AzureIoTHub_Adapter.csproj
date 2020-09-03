@@ -55,6 +55,10 @@
     <Reference Include="BHoM_Adapter">
       <HintPath>C:\ProgramData\BHoM\Assemblies\BHoM_Adapter.dll</HintPath>
     </Reference>
+    <Reference Include="Data_oM">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Data_oM.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.Amqp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.Amqp.2.4.5\lib\net45\Microsoft.Azure.Amqp.dll</HintPath>
     </Reference>
@@ -198,6 +202,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdapterActions\Pull.cs" />
     <Compile Include="AzureIoTHub_Adapter.cs" />
     <Compile Include="CRUD\Read.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

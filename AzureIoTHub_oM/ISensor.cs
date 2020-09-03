@@ -30,7 +30,7 @@ using BH.oM.Base;
 
 namespace BH.oM.Physical.Sensor
 {
-    interface ISensor : IBHoMObject
+    public interface ISensor : IBHoMObject
     {
         double Value { get; set; }
         DateTime TimeStamp { get; set; }
