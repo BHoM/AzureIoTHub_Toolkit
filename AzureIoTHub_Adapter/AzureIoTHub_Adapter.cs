@@ -36,7 +36,6 @@ namespace BH.Adapter.AzureIoTHub
     {
         public AzureIoTHubAdapter()
         {
-            AdapterIdName = "AzureIoTHub_Adapter";
         }
     }
 }
