@@ -23,12 +23,13 @@
     <OutputPath>..\Build\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>5</WarningLevel>
+    <PlatformTarget>ARM64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\Build\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -36,11 +37,15 @@
   <ItemGroup>
     <Reference Include="Adapter_Engine">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\ProgramData\BHoM\Assemblies\Adapter_Engine.dll</HintPath>
+      <HintPath>$(ProgramData)\BHoM\Assemblies\Adapter_Engine.dll</HintPath>
+	  <SpecificVersion>false</SpecificVersion>
+      <Private>false</Private>
     </Reference>
     <Reference Include="Adapter_oM">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\ProgramData\BHoM\Assemblies\Adapter_oM.dll</HintPath>
+      <HintPath>$(ProgramData)\BHoM\Assemblies\Adapter_oM.dll</HintPath>
+	  <SpecificVersion>false</SpecificVersion>
+      <Private>false</Private>
     </Reference>
     <Reference Include="Azure.Core, Version=1.4.1.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
       <HintPath>..\packages\Azure.Core.1.4.1\lib\netstandard2.0\Azure.Core.dll</HintPath>
@@ -50,18 +55,26 @@
     </Reference>
     <Reference Include="BHoM">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\ProgramData\BHoM\Assemblies\BHoM.dll</HintPath>
+      <HintPath>$(ProgramData)\BHoM\Assemblies\BHoM.dll</HintPath>
+	  <SpecificVersion>false</SpecificVersion>
+      <Private>false</Private>
     </Reference>
     <Reference Include="BHoM_Adapter">
-      <HintPath>C:\ProgramData\BHoM\Assemblies\BHoM_Adapter.dll</HintPath>
+      <HintPath>$(ProgramData)\BHoM\Assemblies\BHoM_Adapter.dll</HintPath>
+	  <SpecificVersion>false</SpecificVersion>
+      <Private>false</Private>
     </Reference>
-    <Reference Include="BHoM_Engine, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="BHoM_Engine">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\ProgramData\BHoM\Assemblies\BHoM_Engine.dll</HintPath>
+      <HintPath>$(ProgramData)\BHoM\Assemblies\BHoM_Engine.dll</HintPath>
+	  <SpecificVersion>false</SpecificVersion>
+      <Private>false</Private>
     </Reference>
     <Reference Include="Data_oM">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\ProgramData\BHoM\Assemblies\Data_oM.dll</HintPath>
+      <HintPath>$(ProgramData)\BHoM\Assemblies\Data_oM.dll</HintPath>
+	  <SpecificVersion>false</SpecificVersion>
+      <Private>false</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Amqp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.Amqp.2.4.5\lib\net45\Microsoft.Azure.Amqp.dll</HintPath>
@@ -97,12 +110,11 @@
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.4.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Reflection_Engine">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_Engine.dll</HintPath>
+      <HintPath>$(ProgramData)\BHoM\Assemblies\Reflection_Engine.dll</HintPath>
+	  <SpecificVersion>false</SpecificVersion>
+      <Private>false</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
@@ -230,15 +242,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)"  "C:\ProgramData\BHoM\Assemblies" /Y
-xcopy "$(TargetDir)System.Diagnostics.DiagnosticSource.dll"  "C:\ProgramData\BHoM\Assemblies" /Y
-xcopy "$(TargetDir)Microsoft.Bcl.AsyncInterfaces.dll"  "C:\ProgramData\BHoM\Assemblies" /Y
-xcopy "$(TargetDir)Microsoft.Azure.EventHubs.dll"  "C:\ProgramData\BHoM\Assemblies" /Y
-xcopy "$(TargetDir)Microsoft.Azure.Devices.dll"  "C:\ProgramData\BHoM\Assemblies" /Y
-xcopy "$(TargetDir)Azure.Core.dll"  "C:\ProgramData\BHoM\Assemblies" /Y
-xcopy "$(TargetDir)Microsoft.Azure.Amqp.dll"  "C:\ProgramData\BHoM\Assemblies" /Y
-xcopy "$(TargetDir)Microsoft.Azure.Devices.Shared.dll"  "C:\ProgramData\BHoM\Assemblies" /Y
-xcopy "$(TargetDir)Microsoft.Azure.Services.AppAuthentication.dll"  "C:\ProgramData\BHoM\Assemblies" /Y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)"  "$(ProgramData)\BHoM\Assemblies" /Y
+xcopy "$(TargetDir)System.Diagnostics.DiagnosticSource.dll"  "$(ProgramData)\BHoM\Assemblies" /Y
+xcopy "$(TargetDir)Microsoft.Bcl.AsyncInterfaces.dll"  "$(ProgramData)\BHoM\Assemblies" /Y
+xcopy "$(TargetDir)Microsoft.Azure.EventHubs.dll"  "$(ProgramData)\BHoM\Assemblies" /Y
+xcopy "$(TargetDir)Microsoft.Azure.Devices.dll"  "$(ProgramData)\BHoM\Assemblies" /Y
+xcopy "$(TargetDir)Azure.Core.dll"  "$(ProgramData)\BHoM\Assemblies" /Y
+xcopy "$(TargetDir)Microsoft.Azure.Amqp.dll"  "$(ProgramData)\BHoM\Assemblies" /Y
+xcopy "$(TargetDir)Microsoft.Azure.Devices.Shared.dll"  "$(ProgramData)\BHoM\Assemblies" /Y
+xcopy "$(TargetDir)Microsoft.Azure.Services.AppAuthentication.dll"  "$(ProgramData)\BHoM\Assemblies" /Y</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Microsoft.Azure.Services.AppAuthentication.1.0.3\build\Microsoft.Azure.Services.AppAuthentication.targets" Condition="Exists('..\packages\Microsoft.Azure.Services.AppAuthentication.1.0.3\build\Microsoft.Azure.Services.AppAuthentication.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
