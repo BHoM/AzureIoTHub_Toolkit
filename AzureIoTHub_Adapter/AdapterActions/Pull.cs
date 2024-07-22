@@ -46,14 +46,14 @@ namespace BH.Adapter.AzureIoTHub
         {
             if (actionConfig == null)
             {
-                BH.Engine.Reflection.Compute.RecordError("Please provide AzureIoTHubConfig configuration settings to pull from Azure IoT Hub");
+                BH.Engine.Base.Compute.RecordError("Please provide AzureIoTHubConfig configuration settings to pull from Azure IoT Hub");
                 return new List<IBHoMObject>();
             }
 
             AzureIoTHubConfig config = actionConfig as AzureIoTHubConfig;
             if (config == null)
             {
-                BH.Engine.Reflection.Compute.RecordError("Please provide valid a AzureIoTHubConfig object for connecting to an IoT device");
+                BH.Engine.Base.Compute.RecordError("Please provide valid a AzureIoTHubConfig object for connecting to an IoT device");
                 return new List<IBHoMObject>();
             }
 
@@ -80,7 +80,7 @@ namespace BH.Adapter.AzureIoTHub
             {
                 e.Cancel = true;
                 cts.Cancel();
-                BH.Engine.Reflection.Compute.RecordNote("Exiting...");
+                BH.Engine.Base.Compute.RecordNote("Exiting...");
             };
 
             var tasks = new List<Task>();
@@ -89,13 +89,13 @@ namespace BH.Adapter.AzureIoTHub
             List<IBHoMObject> rtn = new List<IBHoMObject>();
 
             var eventHubReceiver = client.CreateReceiver("$Default", partition, EventPosition.FromEnqueuedTime(DateTime.Now));
-            BH.Engine.Reflection.Compute.RecordNote("Create receiver on partition: " + partition);
+            BH.Engine.Base.Compute.RecordNote("Create receiver on partition: " + partition);
             while (true)
             {
                 if (ct.IsCancellationRequested)
                     break;
 
-                BH.Engine.Reflection.Compute.RecordNote("Listening for messages on: " + partition);
+                BH.Engine.Base.Compute.RecordNote("Listening for messages on: " + partition);
                 // Check for EventData - this methods times out if there is nothing to retrieve.
                 var events = await eventHubReceiver.ReceiveAsync(100);
 
@@ -133,19 +133,19 @@ namespace BH.Adapter.AzureIoTHub
                         catch { }
                     }
 
-                    BH.Engine.Reflection.Compute.RecordNote(string.Format("Message received on partition {0}:", partition));
-                    BH.Engine.Reflection.Compute.RecordNote(string.Format("  {0}:", data));
-                    BH.Engine.Reflection.Compute.RecordNote("Application properties (set by device):");
+                    BH.Engine.Base.Compute.RecordNote(string.Format("Message received on partition {0}:", partition));
+                    BH.Engine.Base.Compute.RecordNote(string.Format("  {0}:", data));
+                    BH.Engine.Base.Compute.RecordNote("Application properties (set by device):");
 
                     foreach (var prop in eventData.Properties)
                     {
-                        BH.Engine.Reflection.Compute.RecordNote(string.Format("  {0}: {1}", prop.Key, prop.Value));
+                        BH.Engine.Base.Compute.RecordNote(string.Format("  {0}: {1}", prop.Key, prop.Value));
                     }
 
-                    BH.Engine.Reflection.Compute.RecordNote("System properties (set by IoT Hub):");
+                    BH.Engine.Base.Compute.RecordNote("System properties (set by IoT Hub):");
                     foreach (var prop in eventData.SystemProperties)
                     {
-                        BH.Engine.Reflection.Compute.RecordNote(string.Format("  {0}: {1}", prop.Key, prop.Value));
+                        BH.Engine.Base.Compute.RecordNote(string.Format("  {0}: {1}", prop.Key, prop.Value));
 
                         if(prop.Key == "iothub-enqueuedtime")
                         {
